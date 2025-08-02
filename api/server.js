@@ -53,7 +53,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send(`<h1 style="color:blue;">Welcome to My Node.js App 🚀</h1>`);
 });
-app.use("/api/posts", postsRouter);  
+app.use("/api/posts", postsRouter);   
 app.use("/api/pins", pinsRouter);  
 
 // MongoDB connection
