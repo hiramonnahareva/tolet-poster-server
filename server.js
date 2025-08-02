@@ -52,7 +52,7 @@ app.get("/", (req, res) => {
 app.use("/api/posts", postsRouter);
 app.use("/api/pins", pinsRouter);  
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect('mongodb+srv://hiramonnahareva:nqmHXN42TCDYlwHt@cluster0.evtcesq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => {
     console.log("✅ MongoDB connected")
     app.listen(PORT, () => {
