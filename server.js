@@ -93,9 +93,9 @@ app.get("/", (req, res) => {
 app.use("/api/posts", postsRouter);
 app.use("/api/pins", pinsRouter);  
 
-// MongoDB Connection (no deprecated options)  
+// MongoDB Connection (no deprecated options)
 mongoose
-  .connect('mongodb+srv://hiramonnahareva:nqmHXN42TCDYlwHt@cluster0.megvh.mongodb.net/?retryWrites=true&w=majority') 
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ MongoDB connected");
     app.listen(PORT, () => {
