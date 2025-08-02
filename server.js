@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config(); 
 // const express = require("express");
 // const cors = require("cors");
 // const mongoose = require("mongoose");
@@ -6,8 +6,8 @@
 // const postsRouter = require("./routes/posts");
 // const pinsRouter = require("./routes/pins");
 
-// const app = express();
-// const PORT = process.env.PORT || 3000; 
+// const app = express(); 
+const PORT = process.env.PORT || 3000; 
 
 // // Middleware
 // app.use(cors());
@@ -35,11 +35,11 @@
 
 
 const express = require("express");
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); 
 const cors = require("cors");
 
-const postsRouter = require("../routes/posts");
-const pinsRouter = require("../routes/pins");
+const postsRouter = require("./routes/posts"); 
+const pinsRouter = require("./routes/pins");
 
 const app = express();
 app.use(cors());
@@ -50,10 +50,15 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/posts", postsRouter);
-app.use("/api/pins", pinsRouter);
+app.use("/api/pins", pinsRouter);  
 
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB connected"))
+  .then(() => {
+    console.log("✅ MongoDB connected")
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`); 
+    }); 
+  })
   .catch(err => {
     console.error("❌ MongoDB connection error:", err.message); 
   });
