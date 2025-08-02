@@ -53,14 +53,14 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send(`<h1 style="color:blue;">Welcome to My Node.js App 🚀</h1>`);
 });
-app.use("/routes/posts.js", postsRouter);  
-app.use("/routes/pins.js", pinsRouter);  
+app.use("/api/posts", postsRouter);  
+app.use("/api/pins", pinsRouter);  
 
 // MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ Connected to MongoDB"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err.message)); 
+  .catch((err) => console.error("❌ MongoDB connection error:", err.message));
 
 module.exports = app; // ✅ Important for Vercel
 
