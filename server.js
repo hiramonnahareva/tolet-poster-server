@@ -91,11 +91,11 @@ app.get("/", (req, res) => {
   res.send(`<h1 style="color:blue;">Welcome to My Node.js App 🚀</h1>`);
 });
 app.use("/api/posts", postsRouter);
-app.use("/api/pins", pinsRouter);
+app.use("/api/pins", pinsRouter); 
 
 // MongoDB Connection (no deprecated options)
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect('mongodb+srv://hiramonnahareva:nqmHXN42TCDYlwHt@cluster0.evtcesq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => {
     console.log("✅ MongoDB connected");
     app.listen(PORT, () => {
