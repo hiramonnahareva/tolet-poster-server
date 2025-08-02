@@ -1,4 +1,4 @@
-require("dotenv").config(); 
+
 // const express = require("express");
 // const cors = require("cors");
 // const mongoose = require("mongoose");
@@ -10,7 +10,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || 3000; 
 
 // // Middleware
-// app.use(cors());
+// app.use(cors()); 
 // app.use(express.json());
 
 // // Routes
@@ -31,9 +31,10 @@ const PORT = process.env.PORT || 3000;
 //   })
 //   .catch((err) => {
 //     console.error("❌ MongoDB connection error:", err.message);
-//   });
+//   }); 
 
 
+require("dotenv").config(); 
 const express = require("express");
 const mongoose = require("mongoose"); 
 const cors = require("cors");
@@ -50,9 +51,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/posts", postsRouter);
-app.use("/api/pins", pinsRouter);  
+app.use("/api/pins", pinsRouter);   
 
-mongoose.connect('mongodb+srv://hiramonnahareva:nqmHXN42TCDYlwHt@cluster0.evtcesq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })  
   .then(() => {
     console.log("✅ MongoDB connected")
     app.listen(PORT, () => {
